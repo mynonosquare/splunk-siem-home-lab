@@ -21,15 +21,22 @@ The objectives of this lab are to:
 
 ## Lab Architecture
 
-```mermaid
-flowchart TD
-    A[Windows Security Logs] --> C[Splunk Enterprise SIEM]
-    B[Web Host Logs] --> C
-    
-    C --> D[SPL Queries]
-    C --> E[Security Dashboards]
-    C --> F[Investigation & Analysis]
-
+Windows Security Logs ──┐
+                        |
+Web Host Logs ──────────┤
+                        ↓
+              Splunk Enterprise SIEM
+                        |
+        ┌───────────────┼───────────────┐
+        ↓               ↓               ↓
+    SPL Queries    Dashboards    Investigation
+        \              |              /
+         \             |             /
+          ↓            ↓            ↓
+        Detection of Suspicious Activity
+                        |
+                        ↓
+              Incident Response Process
 
 ## Technologies Used
 
