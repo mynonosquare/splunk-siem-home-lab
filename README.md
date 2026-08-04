@@ -55,8 +55,8 @@ Used for investigating:
 - Encoded traversal patterns
 
 Examples of indicators searched:
-- ../
-- %2e%2e
+ ../
+ %2e%2e
 
 ## Detection Use Cases
 
@@ -65,6 +65,7 @@ Examples of indicators searched:
 - Reviewed usernames, timestamps, and source hosts to determine whether activity appeared normal or suspicious.
 - Utilized SPL to search web host logs for potential directory traversal attempts
 - Investigated requests containing path traversal patterns such as `../` and encoded traversal sequences
+- Mapped security events and investigation findings to MITRE ATT&CK techniques, including Event ID 4625 failed logon activity associated with T1110 (Brute Force)
 
 ## SPL Queries Summary
 
@@ -75,10 +76,14 @@ Examples of indicators searched:
 
 ## SPL Queries Plain-txt
 
-- index=main EventCode=4625
-- index=main EventCode=4720
-- index=web_logs "../"
-- index=main "%2e%2e"
+ index=main EventCode=4625
+ index=main EventCode=4720
+ index=web_logs "../"
+ index=main "%2e%2e"
+
+ index=main EventCode=4625
+| stats count by Account_Name, Source_Network_Address
+| sort -count
 
 ## Dashboards
 
