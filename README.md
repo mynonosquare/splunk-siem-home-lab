@@ -21,7 +21,43 @@ The objectives of this lab are to:
 
 ## Lab Architecture
                                                               
-
+flowchart TD
+2
+ 
+3
+A[🖥️ Windows Security Logs]
+4
+B[🌐 Web Host Logs]
+5
+ 
+6
+A --> C
+7
+B --> C
+8
+ 
+9
+C["🎯 Splunk Enterprise SIEM"]
+10
+ 
+11
+C --> D["🔍 SPL Queries"]
+12
+C --> E["📊 Security Dashboards"]
+13
+C --> F["🕵️ Threat Investigation"]
+14
+ 
+15
+D --> G["⚠️ Suspicious Activity Detected"]
+16
+E --> G
+17
+F --> G
+18
+ 
+19
+G --> H["🚨 Incident Response Process"]
 
 ## Technologies Used
 
