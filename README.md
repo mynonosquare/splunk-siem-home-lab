@@ -21,25 +21,22 @@ The objectives of this lab are to:
 
 ## Lab Architecture
 
-This lab consists of Splunk Enterprise configured to ingest and analyze security logs from different sources.
+```mermaid
+flowchart TD
+    A[Windows Security Logs] --> C[Splunk Enterprise SIEM]
+    B[Web Host Logs] --> C
+    
+    C --> D[SPL Queries]
+    C --> E[Security Dashboards]
+    C --> F[Investigation & Analysis]
 
-                 Log Sources
-                     |
-        ----------------------------
-        |                          |
- Windows Security Logs       Web Host Logs
-        |                          |
-        ----------------------------
-                     |
-                     v
-             Splunk Enterprise
-                     |
-        ----------------------------
-        |                          |
-    SPL Searches              Dashboards
-        |
-        v
- Incident Investigation
+
+D --> G[Detection of Suspicious Activity]
+E --> G
+F --> G
+
+G --> H[Incident Response Process]
+
 
 ## Technologies Used
 
