@@ -123,6 +123,56 @@ class H response;
 51
 ```
 
+flowchart LR
+
+    subgraph Data_Sources["Data Sources"]
+        A[🖥️ Windows Security Logs]
+        B[🌐 Web Host Logs]
+    end
+
+    subgraph SIEM["Splunk Enterprise SIEM"]
+        C[📊 Centralized Log Collection & Analysis]
+    end
+
+    subgraph Analytics["Security Analytics"]
+        D[🔍 SPL Queries]
+        E[📈 Dashboards]
+        F[🕵️ Investigations]
+    end
+
+    subgraph Detection["Threat Detection"]
+        G[⚠️ Detection of Suspicious Activity]
+    end
+
+    subgraph Response["Incident Response"]
+        H[🚨 Incident Response Process]
+    end
+
+    A --> C
+    B --> C
+
+    C --> D
+    C --> E
+    C --> F
+
+    D --> G
+    E --> G
+    F --> G
+
+    G --> H
+
+    classDef source fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#000;
+    classDef siem fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#000;
+    classDef analytics fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#000;
+    classDef detect fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#000;
+    classDef response fill:#ede9fe,stroke:#7c3aed,stroke-width:3px,color:#000;
+
+    class A,B source;
+    class C siem;
+    class D,E,F analytics;
+    class G detect;
+    class H response;
+
 ## Technologies Used
 
 - Splunk Enterprise
