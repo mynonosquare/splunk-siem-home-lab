@@ -31,13 +31,6 @@ flowchart TD
     C --> F[Investigation & Analysis]
 
 
-D --> G[Detection of Suspicious Activity]
-E --> G
-F --> G
-
-G --> H[Incident Response Process]
-
-
 ## Technologies Used
 
 - Splunk Enterprise
