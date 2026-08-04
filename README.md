@@ -21,8 +21,7 @@ The objectives of this lab are to:
 
 ## Lab Architecture
 
-Windows Security Logs ──┐
-                        |
+Windows Security Logs ──|
 Web Host Logs ──────────┤
                         ↓
               Splunk Enterprise SIEM
