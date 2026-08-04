@@ -21,51 +21,106 @@ The objectives of this lab are to:
 
 ## Lab Architecture
                                                               
-Windows Security Logs ──>                                    SPL Queries ──────> 
-                          Splunk Enterprise SIEM ──────────> Investigation ────> Detection of Suspicious Activity ────> Incident Response Process
-Web Host Logs ──────────>    
-
-Dashboards ───────>
-
-
-                      ```
-+----------------------+          +----------------------+
-| Windows Security     |          | Web Host Logs        |
-| Logs                 |          |                      |
-+----------+-----------+          +----------+-----------+
-           |                                 |
-           |                                 |
-           +---------------+----------------+
-                           |
-                           v
-              +---------------------------+
-              |   Splunk Enterprise SIEM  |
-              +-------------+-------------+
-                            |
-             +--------------+--------------+
-             |                             |
-             v                             v
-     +---------------+             +---------------+
-     | SPL Queries   |             | Dashboards    |
-     +-------+-------+             +-------+-------+
-             |                             |
-             +--------------+--------------+
-                            |
-                            v
-              +---------------------------+
-              | Investigation & Analysis  |
-              +-------------+-------------+
-                            |
-                            v
-              +---------------------------+
-              | Detection of Suspicious   |
-              | Activity                  |
-              +-------------+-------------+
-                            |
-                            v
-              +---------------------------+
-              | Incident Response Process |
-              +---------------------------+
+```mermaid
+2
+flowchart LR
+3
+ 
+4
+subgraph Data_Sources["Data Sources"]
+5
+A[🖥️ Windows Security Logs]
+6
+B[🌐 Web Host Logs]
+7
+end
+8
+ 
+9
+subgraph SIEM["Splunk Enterprise SIEM"]
+10
+C[📊 Centralized Log Collection & Analysis]
+11
+end
+12
+ 
+13
+subgraph Analytics["Security Analytics"]
+14
+D[🔍 SPL Queries]
+15
+E[📈 Dashboards]
+16
+F[🕵️ Investigations]
+17
+end
+18
+ 
+19
+subgraph Detection["Threat Detection"]
+20
+G[⚠️ Detection of Suspicious Activity]
+21
+end
+22
+ 
+23
+subgraph Response["Incident Response"]
+24
+H[🚨 Incident Response Process]
+25
+end
+26
+ 
+27
+A --> C
+28
+B --> C
+29
+ 
+30
+C --> D
+31
+C --> E
+32
+C --> F
+33
+ 
+34
+D --> G
+35
+E --> G
+36
+F --> G
+37
+ 
+38
+G --> H
+39
+ 
+40
+classDef source fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#000;
+41
+classDef siem fill:#dcfce7,stroke:#16a34a,stroke-width:3px,color:#000;
+42
+classDef analytics fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#000;
+43
+classDef detect fill:#fee2e2,stroke:#dc2626,stroke-width:3px,color:#000;
+44
+classDef response fill:#ede9fe,stroke:#7c3aed,stroke-width:3px,color:#000;
+45
+ 
+46
+class A,B source;
+47
+class C siem;
+48
+class D,E,F analytics;
+49
+class G detect;
+50
+class H response;
+51
 ```
 
 ## Technologies Used
