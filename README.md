@@ -20,22 +20,53 @@ The objectives of this lab are to:
 - Apply security frameworks such as MITRE ATT&CK and the NIST Cybersecurity Framework (CSF) to guide investigation and response processes.
 
 ## Lab Architecture
+                                                              
+Windows Security Logs ──>                                    SPL Queries ──────> 
+                          Splunk Enterprise SIEM ──────────> Investigation ────> Detection of Suspicious Activity ────> Incident Response Process
+Web Host Logs ──────────>    
 
-Windows Security Logs ──|
-Web Host Logs ──────────┤
-                        ↓
-              Splunk Enterprise SIEM
-                        |
-        ┌───────────────┼───────────────┐
-        ↓               ↓               ↓
-    SPL Queries    Dashboards    Investigation
-        \              |              /
-         \             |             /
-          ↓            ↓            ↓
-        Detection of Suspicious Activity
-                        |
-                        ↓
-              Incident Response Process
+Dashboards ───────>
+
+
+                      ```
++----------------------+          +----------------------+
+| Windows Security     |          | Web Host Logs        |
+| Logs                 |          |                      |
++----------+-----------+          +----------+-----------+
+           |                                 |
+           |                                 |
+           +---------------+----------------+
+                           |
+                           v
+              +---------------------------+
+              |   Splunk Enterprise SIEM  |
+              +-------------+-------------+
+                            |
+             +--------------+--------------+
+             |                             |
+             v                             v
+     +---------------+             +---------------+
+     | SPL Queries   |             | Dashboards    |
+     +-------+-------+             +-------+-------+
+             |                             |
+             +--------------+--------------+
+                            |
+                            v
+              +---------------------------+
+              | Investigation & Analysis  |
+              +-------------+-------------+
+                            |
+                            v
+              +---------------------------+
+              | Detection of Suspicious   |
+              | Activity                  |
+              +-------------+-------------+
+                            |
+                            v
+              +---------------------------+
+              | Incident Response Process |
+              +---------------------------+
+```
 
 ## Technologies Used
 
